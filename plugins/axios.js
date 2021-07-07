@@ -1,8 +1,5 @@
 export default function({ $axios, redirect }) {
-  $axios.setHeader(
-    "Authorization",
-    "563492ad6f917000010000014442e2d8da2d488fa0a33b2680b372ce"
-  );
+  $axios.setHeader("Authorization", process.env.API_KEY);
   // $axios.onRequest(config => {
   //   config.headers["Authorization"] =
   //     "563492ad6f917000010000014442e2d8da2d488fa0a33b2680b372ce";

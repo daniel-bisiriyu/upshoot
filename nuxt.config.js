@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 export default {
   mode: "universal",
   /*
@@ -36,7 +38,8 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    "@nuxtjs/tailwindcss"
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/dotenv"
   ],
   /*
    ** Nuxt.js modules
@@ -52,6 +55,9 @@ export default {
    */
   axios: {
     baseURL: "https://api.pexels.com/v1/"
+  },
+  env: {
+    API_KEY: process.env.API_KEY
   },
   /*
    ** Build configuration
