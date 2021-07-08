@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <div class="w-full px-12 lg:w-3/4 xl:w-3/5">
+    <div class="w-full px-6  lg:w-3/4 xl:w-3/5">
       <div>
         <p class="text-white font-bold text-4xl">
           The best free stock photos & videos shared by talented creators.

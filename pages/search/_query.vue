@@ -2,21 +2,16 @@
   <div class="">
     <app-header />
     <images :images="images" :page-no="pageNo" :expectedImagesCount="10" />
-    <div class="flex justify-center my-6">
-      <loading v-if="loading" />
-    </div>
   </div>
 </template>
 
 <script>
-import AppHeader from "../components/Header.vue";
-import Images from "../components/Images.vue";
-import Loading from "../components/Loading.vue";
+import AppHeader from "../../components/Header.vue";
+import Images from "../../components/Images.vue";
 export default {
   components: {
     AppHeader,
-    Images,
-    Loading
+    Images
   },
   data() {
     return {
@@ -32,17 +27,13 @@ export default {
     }
   },
   mounted() {
-    this.getImages();
-    if (process.client) {
-      window.addEventListener("scroll", this.checkIfAtBottom);
-    }
+    this.getQueriedImages();
   },
   methods: {
-    async getImages() {
+    async getQueriedImages() {
       try {
-        const response = await this.$api.images.getImages(
-          this.pageNo,
-          this.perPage
+        const response = await this.$api.images.getQueriedImages(
+          this.$route.params.query
         );
         this.images = [...this.images, ...response.data.photos];
       } catch (error) {

@@ -1,12 +1,17 @@
 <template>
-  <div class="search-bar flex items-center w-full px-3">
-    <input
-      type="text"
-      class="search-input w-full  focus:outline-none"
-      :class="[padding]"
-      placeholder="Search for free photos and videos"
-    />
-    <search-icon />
+  <div class="search-bar  w-full px-3">
+    <form class="flex items-center" @submit.prevent="search">
+      <input
+        type="text"
+        class="search-input w-full  focus:outline-none"
+        :class="[padding]"
+        placeholder="Search for free photos and videos"
+        v-model="query"
+      />
+      <div class="cursor-pointer" @click="search">
+        <search-icon />
+      </div>
+    </form>
   </div>
 </template>
 
@@ -23,6 +28,18 @@ export default {
   },
   components: {
     SearchIcon
+  },
+  data() {
+    return {
+      query: ""
+    };
+  },
+  methods: {
+    search() {
+      if (this.query.length) {
+        this.$router.push(`/search/${this.query}`);
+      }
+    }
   }
 };
 </script>
